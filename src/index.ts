@@ -4,11 +4,20 @@ import chatRouter from './routes/chatRoutes';
 import 'dotenv/config';
 import userRouter from './routes/userRoutes';
 import articleRouter from './routes/articleRoutes';
+import cors from 'cors';
 
 
 const app = express();
 
 app.use(express.json());
+
+app.use(cors({
+  origin: '*',
+  credentials: true 
+}));
+
+
+app.options('*', cors());
 
 // Configuração do middleware 'express-session'
 app.use(
